@@ -1,8 +1,7 @@
-package com.mirror.concertsapi.utils;
+package com.mirror.concertsapi.infrastructure.helpers;
 
-import com.mirror.concertsapi.api.model.Concert;
-import com.mirror.concertsapi.api.model.dto.*;
-import com.mirror.concertsapi.api.utils.ConcertMapper;
+import com.mirror.concertsapi.domain.Concert;
+import com.mirror.concertsapi.infrastructure.ticketmasterdto.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.Assert;
@@ -18,7 +17,7 @@ public class ConcertMapperTest {
     public void testTicketmasterDTOIsMappedToConcert() {
         TicketmasterDTO ticketmasterDTO = getTestObject();
 
-        List<Concert> concerts = ConcertMapper.TicketmasterResponseToConcertMapper(ticketmasterDTO);
+        List<Concert> concerts = ConcertMapper.TicketmasterDtoToConcertMapper(ticketmasterDTO);
 
         Assert.notNull(concerts, "Concert list is null");
         Assert.noNullElements(concerts, "Concert list has null elements");

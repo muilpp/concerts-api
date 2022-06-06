@@ -1,7 +1,7 @@
-package com.mirror.concertsapi.api;
+package com.mirror.concertsapi.infrastructure;
 
-import com.mirror.concertsapi.api.model.Concert;
-import com.mirror.concertsapi.api.service.ConcertService;
+import com.mirror.concertsapi.domain.Concert;
+import com.mirror.concertsapi.domain.ConcertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;

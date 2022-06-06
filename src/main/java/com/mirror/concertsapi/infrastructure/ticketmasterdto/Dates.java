@@ -1,4 +1,4 @@
-package com.mirror.concertsapi.api.model.dto;
+package com.mirror.concertsapi.infrastructure.ticketmasterdto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class City {
+public class Dates {
 
-    @JsonProperty("name")
-    private String name;
+    @JsonProperty("start")
+    private Start start;
 }

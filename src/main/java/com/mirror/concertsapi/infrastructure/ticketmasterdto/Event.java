@@ -1,4 +1,4 @@
-package com.mirror.concertsapi.api.model.dto;
+package com.mirror.concertsapi.infrastructure.ticketmasterdto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,14 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Embedded {
+public class Event {
 
-    @JsonProperty("events")
-    private List<Event> events;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("dates")
+    private Dates dates;
+    @JsonProperty("_embedded")
+    private Embedded__1 embedded;
 }

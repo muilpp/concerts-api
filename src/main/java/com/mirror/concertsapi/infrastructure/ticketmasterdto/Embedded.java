@@ -1,4 +1,4 @@
-package com.mirror.concertsapi.api.model.dto;
+package com.mirror.concertsapi.infrastructure.ticketmasterdto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,8 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Embedded__1 {
+public class Embedded {
 
-    @JsonProperty("venues")
-    private List<Venue> venues = null;
+    @JsonProperty("events")
+    private List<Event> events;
 }

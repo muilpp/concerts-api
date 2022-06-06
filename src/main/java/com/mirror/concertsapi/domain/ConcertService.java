@@ -1,6 +1,6 @@
-package com.mirror.concertsapi.api.service;
+package com.mirror.concertsapi.domain;
 
-import com.mirror.concertsapi.api.model.Concert;
+import com.mirror.concertsapi.domain.Concert;
 
 import java.util.List;
 

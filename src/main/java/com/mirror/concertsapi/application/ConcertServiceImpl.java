@@ -1,9 +1,10 @@
-package com.mirror.concertsapi.api.service;
+package com.mirror.concertsapi.application;
 
-import com.mirror.concertsapi.api.config.CacheConfig;
-import com.mirror.concertsapi.api.model.Concert;
-import com.mirror.concertsapi.api.model.dto.TicketmasterDTO;
-import com.mirror.concertsapi.api.utils.ConcertMapper;
+import com.mirror.concertsapi.infrastructure.restconfig.CacheConfig;
+import com.mirror.concertsapi.domain.Concert;
+import com.mirror.concertsapi.infrastructure.ticketmasterdto.TicketmasterDTO;
+import com.mirror.concertsapi.infrastructure.helpers.ConcertMapper;
+import com.mirror.concertsapi.domain.ConcertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
@@ -44,7 +45,7 @@ public class ConcertServiceImpl implements ConcertService {
         ResponseEntity<TicketmasterDTO> response = restTemplate.getForEntity(urlTemplate, TicketmasterDTO.class);
 
         if (response.getStatusCode() == HttpStatus.OK) {
-            return ConcertMapper.TicketmasterResponseToConcertMapper(response.getBody());
+            return ConcertMapper.TicketmasterDtoToConcertMapper(response.getBody());
         }
 
         LOGGER.warning("Failed to get data elements elements groups, error code: " + response.getStatusCodeValue());

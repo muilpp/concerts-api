@@ -1,4 +1,4 @@
-package com.mirror.concertsapi.api.model;
+package com.mirror.concertsapi.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

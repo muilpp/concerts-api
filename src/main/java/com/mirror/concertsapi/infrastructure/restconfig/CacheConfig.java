@@ -1,4 +1,4 @@
-package com.mirror.concertsapi.api.config;
+package com.mirror.concertsapi.infrastructure.restconfig;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.mirror.concertsapi.api.config;
+package com.mirror.concertsapi.infrastructure.restconfig;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
