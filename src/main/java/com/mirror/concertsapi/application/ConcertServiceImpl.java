@@ -2,9 +2,9 @@ package com.mirror.concertsapi.application;
 
 import com.mirror.concertsapi.infrastructure.restconfig.CacheConfig;
 import com.mirror.concertsapi.domain.Concert;
-import com.mirror.concertsapi.infrastructure.ticketmasterdto.TicketmasterDTO;
 import com.mirror.concertsapi.infrastructure.helpers.ConcertMapper;
 import com.mirror.concertsapi.domain.ConcertService;
+import com.mirror.concertsapi.infrastructure.ticketmasterdto.TicketmasterEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
@@ -42,7 +42,7 @@ public class ConcertServiceImpl implements ConcertService {
                 .encode()
                 .toUriString();
 
-        ResponseEntity<TicketmasterDTO> response = restTemplate.getForEntity(urlTemplate, TicketmasterDTO.class);
+        ResponseEntity<TicketmasterEntity.TicketmasterDTO> response = restTemplate.getForEntity(urlTemplate, TicketmasterEntity.TicketmasterDTO.class);
 
         if (response.getStatusCode() == HttpStatus.OK) {
             return ConcertMapper.TicketmasterDtoToConcertMapper(response.getBody());

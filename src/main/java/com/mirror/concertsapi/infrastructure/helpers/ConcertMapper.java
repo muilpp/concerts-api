@@ -1,7 +1,7 @@
 package com.mirror.concertsapi.infrastructure.helpers;
 
 import com.mirror.concertsapi.domain.Concert;
-import com.mirror.concertsapi.infrastructure.ticketmasterdto.TicketmasterDTO;
+import com.mirror.concertsapi.infrastructure.ticketmasterdto.TicketmasterEntity;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,14 +9,14 @@ import java.util.stream.Collectors;
 
 public class ConcertMapper {
 
-    public static List<Concert> TicketmasterDtoToConcertMapper(TicketmasterDTO ticketMasterDTO) {
+    public static List<Concert> TicketmasterDtoToConcertMapper(TicketmasterEntity.TicketmasterDTO ticketMasterDTO) {
 
-        return ticketMasterDTO.getEmbedded().getEvents().stream()
+        return ticketMasterDTO._embedded().events().stream()
                 .map(e ->
-                    new Concert(e.getName(),
-                            e.getEmbedded().getVenues().get(0).getCity().getName(),
-                            e.getEmbedded().getVenues().get(0).getName(),
-                            LocalDate.parse(e.getDates().getStart().getLocalDate())))
+                    new Concert(e.name(),
+                            e._embedded().venues().get(0).city().name(),
+                            e._embedded().venues().get(0).name(),
+                            LocalDate.parse(e.dates().start().localDate())))
                 .collect(Collectors.toList());
     }
 }

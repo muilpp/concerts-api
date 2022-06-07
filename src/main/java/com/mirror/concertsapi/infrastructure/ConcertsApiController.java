@@ -21,8 +21,7 @@ public class ConcertsApiController {
     public ConcertService concertService;
 
     @GetMapping("test")
-    public List<Concert> test() {
-
+    public List<Concert> getConcerts() {
         return concertService.getConcerts("Imelda", "sp3r", "100");
     }
 }

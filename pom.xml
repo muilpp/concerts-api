@@ -14,7 +14,7 @@
 	<name>concerts-api</name>
 	<description>Concerts API for MM</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 		<testcontainers.version>1.17.2</testcontainers.version>
 	</properties>
 	<dependencies>
