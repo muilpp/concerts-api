@@ -5,5 +5,5 @@ import com.mirror.concertsapi.domain.Concert;
 import java.util.List;
 
 public interface ConcertsFetcher {
-    List<Concert> getConcertsInArea();
+    List<Concert> getConcertsInArea(String latitude, String longitude);
 }

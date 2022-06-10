@@ -1,7 +1,7 @@
 package com.mirror.concertsapi.domain;
 
-import java.util.Set;
+import java.util.List;
 
 public interface ConcertService {
-    Set<Concert> getConcerts(String lastfmUser, String lastfmKey, int bandsLimit, String geoPoint, String radius);
+    List<Concert> getConcerts(String lastfmUser, String lastfmKey, int bandsLimit, String latitude, String longitude);
 }

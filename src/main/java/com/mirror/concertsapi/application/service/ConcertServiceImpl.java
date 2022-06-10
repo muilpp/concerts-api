@@ -9,10 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 @Service
 public class ConcertServiceImpl implements ConcertService {
@@ -26,11 +25,13 @@ public class ConcertServiceImpl implements ConcertService {
 
     @Override
     @Cacheable(value = CacheConfig.CONCERTS_CACHE, key = "#root.method.name")
-    public Set<Concert> getConcerts(String lastfmUser, String lastfmKey, int bandsLimit, String geoPoint, String radius) {
+    public List<Concert> getConcerts(String lastfmUser, String lastfmKey, int bandsLimit, String latitude, String longitude) {
         List<String> bands = bandsFetcher.getFavoriteBands(lastfmUser, lastfmKey, bandsLimit);
 
-        return concertsFetcher.getConcertsInArea().stream()
+        return concertsFetcher.getConcertsInArea(latitude, longitude).stream()
                 .filter(c -> bands.contains(c.getBand()))
-                .collect(Collectors.toSet());
+                .distinct()
+                .sorted(Comparator.comparing(Concert::getDate))
+                .toList();
     }
 }
