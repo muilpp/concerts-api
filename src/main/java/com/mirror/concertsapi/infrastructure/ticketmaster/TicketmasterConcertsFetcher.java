@@ -29,11 +29,11 @@ public class TicketmasterConcertsFetcher implements ConcertsFetcher {
     @Value("${ticketmaster.api.key}")
     private String ticketmasterKey;
 
-    public List<Concert> getConcertsInArea() {
+    public List<Concert> getConcertsInArea(String latitude, String longitude) {
         String urlTemplate = UriComponentsBuilder.fromHttpUrl(ticketmasterUrl)
                 .queryParam("category_ids", "10001")
-                .queryParam("lat", "41.3926467")
-                .queryParam("long", "2.0701496")
+                .queryParam("lat", latitude)
+                .queryParam("long", longitude)
                 .queryParam("radius", "100")
                 .queryParam("rows", "250")
                 .queryParam("apikey", ticketmasterKey)
