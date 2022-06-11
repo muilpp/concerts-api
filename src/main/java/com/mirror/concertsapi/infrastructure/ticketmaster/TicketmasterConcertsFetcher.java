@@ -5,6 +5,7 @@ import com.mirror.concertsapi.domain.Concert;
 import com.mirror.concertsapi.infrastructure.helpers.ConcertMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 @Service
+@PropertySource("file:${app.home}/config.properties")
 public class TicketmasterConcertsFetcher implements ConcertsFetcher {
     private static final Logger LOGGER = Logger.getLogger(ConcertsFetcher.class.getName());
 
