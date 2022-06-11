@@ -28,7 +28,6 @@ public class LastfmBandsFetcher implements BandsFetcher {
     public List<String> getFavoriteBands(String user, String key, int limit) {
         String urlTemplate = UriComponentsBuilder.fromHttpUrl(lastfmUrl)
                 .queryParam("method", "user.gettopartists")
-                .queryParam("period", "12month")
                 .queryParam("user", user)
                 .queryParam("api_key", key)
                 .queryParam("format", "json")

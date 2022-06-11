@@ -9,9 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service
 public class ConcertServiceImpl implements ConcertService {
@@ -25,10 +26,16 @@ public class ConcertServiceImpl implements ConcertService {
 
     @Override
     @Cacheable(value = CacheConfig.CONCERTS_CACHE, key = "#root.method.name")
-    public List<Concert> getConcerts(String lastfmUser, String lastfmKey, int bandsLimit, String latitude, String longitude) {
-        List<String> bands = bandsFetcher.getFavoriteBands(lastfmUser, lastfmKey, bandsLimit);
+    public List<Concert> getConcerts(String[] lastfmUser, String lastfmKey, int bandsLimit, String[] latitude, String[] longitude) {
 
-        return concertsFetcher.getConcertsInArea(latitude, longitude).stream()
+        Set<String> bands = Arrays.stream(lastfmUser)
+                .map(user -> bandsFetcher.getFavoriteBands(user, lastfmKey, bandsLimit))
+                .flatMap(List::stream)
+                .collect(Collectors.toSet());
+
+        return IntStream.range(0, latitude.length)
+                .mapToObj(i -> concertsFetcher.getConcertsInArea(latitude[i], longitude[i]))
+                .flatMap(List::stream)
                 .filter(c -> bands.contains(c.getBand()))
                 .distinct()
                 .sorted(Comparator.comparing(Concert::getDate))
