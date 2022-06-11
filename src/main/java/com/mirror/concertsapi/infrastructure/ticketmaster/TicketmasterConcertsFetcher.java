@@ -18,7 +18,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 @Service
-@PropertySource("file:${app.home}/config.properties")
+@PropertySource(value = "file:${app.home}/config.properties", ignoreResourceNotFound=true)
 public class TicketmasterConcertsFetcher implements ConcertsFetcher {
     private static final Logger LOGGER = Logger.getLogger(ConcertsFetcher.class.getName());
 
