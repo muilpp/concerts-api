@@ -24,7 +24,6 @@ public class LastfmBandsFetcher implements BandsFetcher {
     @Value("${lastfm.base.url}")
     private String lastfmUrl;
 
-
     public List<String> getFavoriteBands(String user, String key, int limit) {
         String urlTemplate = UriComponentsBuilder.fromHttpUrl(lastfmUrl)
                 .queryParam("method", "user.gettopartists")
