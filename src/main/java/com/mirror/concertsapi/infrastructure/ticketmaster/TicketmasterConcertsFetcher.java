@@ -21,6 +21,8 @@ import java.util.logging.Logger;
 @PropertySource(value = "file:${app.home}/config.properties", ignoreResourceNotFound=true)
 public class TicketmasterConcertsFetcher implements ConcertsFetcher {
     private static final Logger LOGGER = Logger.getLogger(ConcertsFetcher.class.getName());
+    private static final String CONCERT_CATEGORY_ID = "10001";
+    private static final String FESTIVAL_CATEGORY_ID = "10101";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -33,7 +35,7 @@ public class TicketmasterConcertsFetcher implements ConcertsFetcher {
 
     public List<Concert> getConcertsInArea(String latitude, String longitude) {
         String urlTemplate = UriComponentsBuilder.fromHttpUrl(ticketmasterUrl)
-                .queryParam("category_ids", "10001")
+                .queryParam("category_ids", CONCERT_CATEGORY_ID + "," + FESTIVAL_CATEGORY_ID)
                 .queryParam("lat", latitude)
                 .queryParam("long", longitude)
                 .queryParam("radius", "100")

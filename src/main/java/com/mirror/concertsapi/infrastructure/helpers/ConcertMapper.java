@@ -16,11 +16,22 @@ public class ConcertMapper {
             return Collections.emptyList();
 
         return ticketMasterDTO.events().stream()
-                .map(e ->
-                    new Concert(e.attractions() != null ? e.attractions().get(0).name() : "",
-                            e.venue().location().address().city(),
-                            e.venue().name(),
-                            parseDate(e.local_event_date())))
+                .map(e -> {
+                            if (e.attractions() == null)
+                                return List.of(new Concert("",
+                                        e.venue().location().address().city(),
+                                        e.venue().name(),
+                                        parseDate(e.local_event_date())));
+                            else {
+                                return e.attractions().stream()
+                                        .map(a -> new Concert(a.name(),
+                                            e.venue().location().address().city(),
+                                            e.venue().name(),
+                                            parseDate(e.local_event_date())))
+                                        .toList();
+                            }
+                        })
+                .flatMap(List::stream)
                 .toList();
     }
 
