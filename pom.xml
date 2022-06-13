@@ -93,7 +93,7 @@
 			<properties>
 				<app.home>/home/marc/workspace/marc/concerts-api</app.home>
 				<jpa.ddl-auto>none</jpa.ddl-auto>
-				<datasource.url>jdbc:mysql://localhost:3306/dhis2</datasource.url>
+				<datasource.url>jdbc:mysql://localhost:3306/concerts</datasource.url>
 				<datasource.username>mysqluser</datasource.username>
 				<datasource.password>mysqlpwd</datasource.password>
 			</properties>
@@ -106,7 +106,7 @@
 			<properties>
 				<app.home>/home/marc/workspace/marc/concerts-api</app.home>
 				<jpa.ddl-auto>none</jpa.ddl-auto>
-				<datasource.url>jdbc:mysql://localhost:3306/dhis2</datasource.url>
+				<datasource.url>jdbc:mysql://localhost:3306/concerts</datasource.url>
 				<datasource.username>mysqluser</datasource.username>
 				<datasource.password>mysqlpwd</datasource.password>
 			</properties>

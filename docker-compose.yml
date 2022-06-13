@@ -1,0 +1,32 @@
+version: "3"
+services:
+  concerts-api:
+    image: muilpp/concerts-api
+    ports:
+      - "8092:8092"
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysqldb:3306/concerts
+      - app.home=.
+    networks:
+      - api-network
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:8
+    networks:
+      - api-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=concerts
+      - MYSQL_USER=mysqluser
+      - MYSQL_PASSWORD=mysqlpwd
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - dbdata:/var/lib/mysql
+
+networks:
+  api-network:
+
+volumes:
+  dbdata:

@@ -1,7 +1,6 @@
 package com.mirror.concertsapi.infrastructure.helpers;
 
 import com.mirror.concertsapi.infrastructure.lastfm.LastfmEntity;
-
 import java.util.Collections;
 import java.util.List;
 
