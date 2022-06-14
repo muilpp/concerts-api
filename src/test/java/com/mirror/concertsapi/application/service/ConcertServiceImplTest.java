@@ -52,7 +52,7 @@ public class ConcertServiceImplTest {
         //Then the response contains the expected concert objects
         Assertions.assertNotNull(concerts);
         Assertions.assertEquals(4, concerts.size());
-        Assertions.assertEquals("The Zen Circus", concerts.get(0).getBand());
+        Assertions.assertEquals("The Zen Circus", concerts.get(0).getArtist());
         Assertions.assertEquals("Aimé Giral", concerts.get(1).getVenue());
         Assertions.assertEquals("2025-06-20", concerts.get(2).getDate());
         Assertions.assertEquals("Barcelona", concerts.get(3).getCity());

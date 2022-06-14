@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
@@ -29,12 +26,12 @@ public class ConcertsApiController {
     @Autowired
     public ConcertService concertService;
 
-    @GetMapping("area")
-    public List<Concert> getConcerts(@RequestParam("bandsLimit") @Min(1) @Max(1000) Integer bandsLimit,
-                                     @RequestParam("lastfmUser") @Valid  String[] lastfmUser,
-                                     @RequestParam("lastfmKey") @NotNull String lastfmKey,
-                                     @RequestParam("lat") @Valid String[] latitude,
-                                     @RequestParam("long") @Valid String[] longitude) {
+    @GetMapping("{lastfmUser}/{lastfmKey}/{lat}/{long}")
+    public List<Concert> getConcerts(@PathVariable("lastfmUser") @Valid  String[] lastfmUser,
+                                     @PathVariable("lastfmKey") @NotNull String lastfmKey,
+                                     @PathVariable("lat") @Valid String[] latitude,
+                                     @PathVariable("long") @Valid String[] longitude,
+                                     @RequestParam("bandsLimit") @Min(1) @Max(1000) Integer bandsLimit) {
 
         if (latitude.length != longitude.length)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Latitude and longitude parameters must have the same length");

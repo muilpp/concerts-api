@@ -28,7 +28,7 @@ public class ConcertMapperTest {
         Assertions.assertEquals(LocalDate.of(2021, 5, 20).toString(), concerts.get(0).getDate());
         Assertions.assertEquals(LocalDate.of(2022, 6, 21).toString(), concerts.get(1).getDate());
         Assertions.assertEquals(LocalDate.of(2023, 7, 22).toString(), concerts.get(2).getDate());
-        Assertions.assertEquals("Woodstock Poland", concerts.get(2).getBand());
+        Assertions.assertEquals("Woodstock Poland", concerts.get(2).getArtist());
     }
 
     @Test
@@ -46,11 +46,11 @@ public class ConcertMapperTest {
         Assertions.assertEquals(LocalDate.of(2021, 5, 20).toString(), concerts.get(0).getDate());
         Assertions.assertEquals(LocalDate.of(2022, 6, 21).toString(), concerts.get(1).getDate());
         Assertions.assertEquals(LocalDate.of(2023, 7, 22).toString(), concerts.get(2).getDate());
-        Assertions.assertEquals("Woodstock Poland", concerts.get(2).getBand());
-        Assertions.assertEquals("Manu Chao", concerts.get(3).getBand());
+        Assertions.assertEquals("Woodstock Poland", concerts.get(2).getArtist());
+        Assertions.assertEquals("Manu Chao", concerts.get(3).getArtist());
         Assertions.assertEquals(LocalDate.of(2023, 7, 22).toString(), concerts.get(4).getDate());
         Assertions.assertEquals("Szczecin", concerts.get(5).getCity());
-        Assertions.assertEquals("Lehendakaris Muertos", concerts.get(5).getBand());
+        Assertions.assertEquals("Lehendakaris Muertos", concerts.get(5).getArtist());
     }
 
     @Test

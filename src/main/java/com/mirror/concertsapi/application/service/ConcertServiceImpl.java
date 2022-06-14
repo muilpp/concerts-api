@@ -36,7 +36,7 @@ public class ConcertServiceImpl implements ConcertService {
         return IntStream.range(0, latitude.length)
                 .mapToObj(i -> concertsFetcher.getConcertsInArea(latitude[i], longitude[i]))
                 .flatMap(List::stream)
-                .filter(c -> bands.contains(c.getBand()))
+                .filter(c -> bands.contains(c.getArtist()))
                 .distinct()
                 .sorted(Comparator.comparing(Concert::getDate))
                 .toList();

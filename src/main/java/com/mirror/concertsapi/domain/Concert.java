@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Concert {
-    private String band;
+    private String artist;
     private String city;
     private String venue;
     private String date;
