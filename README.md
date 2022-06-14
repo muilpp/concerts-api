@@ -15,7 +15,7 @@ mvn package -Dapp.home={location of the config.properties file}
 ```
 - Run it:
 ```bash
-- java -jar "-Dapp.home={location of the config.properties file}" concerts-api-0.0.1-SNAPSHOT.jar
+java -jar "-Dapp.home={location of the config.properties file}" concerts-api-0.0.1-SNAPSHOT.jar
 ```
 
 ## Usage
