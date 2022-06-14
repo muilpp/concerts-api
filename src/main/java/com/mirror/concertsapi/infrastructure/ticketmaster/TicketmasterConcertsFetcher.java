@@ -3,8 +3,10 @@ package com.mirror.concertsapi.infrastructure.ticketmaster;
 import com.mirror.concertsapi.application.usecases.ConcertsFetcher;
 import com.mirror.concertsapi.domain.Concert;
 import com.mirror.concertsapi.infrastructure.helpers.ConcertMapper;
+import com.mirror.concertsapi.infrastructure.restconfig.CacheConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +35,7 @@ public class TicketmasterConcertsFetcher implements ConcertsFetcher {
     @Value("${ticketmaster.api.key}")
     private String ticketmasterKey;
 
+    @Cacheable(value = CacheConfig.CONCERTS_CACHE, key = "{#latitude, #longitude}")
     public List<Concert> getConcertsInArea(String latitude, String longitude) {
         String urlTemplate = UriComponentsBuilder.fromHttpUrl(ticketmasterUrl)
                 .queryParam("category_ids", CONCERT_CATEGORY_ID + "," + FESTIVAL_CATEGORY_ID)

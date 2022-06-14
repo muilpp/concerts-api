@@ -1,8 +1,10 @@
 package com.mirror.concertsapi.infrastructure.lastfm;
 
 import com.mirror.concertsapi.application.usecases.BandsFetcher;
+import com.mirror.concertsapi.infrastructure.restconfig.CacheConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,7 @@ public class LastfmBandsFetcher implements BandsFetcher {
     @Value("${lastfm.base.url}")
     private String lastfmUrl;
 
+    @Cacheable(value = CacheConfig.CONCERTS_CACHE, key = "{#user, #key}")
     public List<String> getFavoriteBands(String user, String key, int limit) {
         String urlTemplate = UriComponentsBuilder.fromHttpUrl(lastfmUrl)
                 .queryParam("method", "user.gettopartists")

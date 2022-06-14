@@ -4,12 +4,13 @@ import com.mirror.concertsapi.application.usecases.BandsFetcher;
 import com.mirror.concertsapi.application.usecases.ConcertsFetcher;
 import com.mirror.concertsapi.domain.Concert;
 import com.mirror.concertsapi.domain.ConcertService;
-import com.mirror.concertsapi.infrastructure.restconfig.CacheConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -25,7 +26,6 @@ public class ConcertServiceImpl implements ConcertService {
     private ConcertsFetcher concertsFetcher;
 
     @Override
-    @Cacheable(value = CacheConfig.CONCERTS_CACHE, key = "#root.method.name")
     public List<Concert> getConcerts(String[] lastfmUser, String lastfmKey, int bandsLimit, String[] latitude, String[] longitude) {
 
         Set<String> bands = Arrays.stream(lastfmUser)
