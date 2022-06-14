@@ -25,7 +25,7 @@ The API is a single point that accepts multiple parameters:
 ```bash
 http://localhost:8092/concerts/lastfmUser/lastfmKey/latitude/longitude?bandsLimit=limit
 ```
-- LastfmUser: Comma separated String array that might contain ore or multiple users to check the most listened bands of.
+- LastfmUser: Comma separated String array that might contain one or multiple users to check the most listened bands of.
 - LastfmKey: It's the key provided by [lastFM](https://www.last.fm/api), in the form of a String.
 - Latitude^: Comma separated String array containing the latitudes of all the locations you want to find concerts in.
 - Longitude^: Comma separated String array containing the longitudes of all the locations you want to find concerts in.
